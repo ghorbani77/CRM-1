@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script type="text/javascript" language="javascript">
+    function cotizacion_agregada() {
+        alert('La cotizacion fue agregada con exito');
+        catalogo = window.open("about:blank", "Catalogo");
+        catalogo.close();
+    }
+    function cliente_agregado() {
+        alert('El cliente fue agregado exitosamente');
+        alta_clientes = window.open("about:blank", "Alta de clientes");
+        alta_clientes.close();
+    }
+    function cotizacion_terminada() {
+        alert('La cotizacion fue aprobada con exito');
+        cotizaciones = window.open("about:blank", "Cotizaciones");
+        cotizaciones.close();
+    }
+    function proveedor_agregado() {
+        alert('Proveedor agregado con exito');
+        alta_proveedores = window.open("about:blank", "Alta de proveedores");
+        alta_proveedores.close();
+    }
+    function venta_agregada() {
+        alert('Venta agregada con exito');
+    }
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Relationship Management - Inklaser</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="js/vendor/modernizr.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/material-design-font.css">
+    </head>
+    
+    
+<body>
+    <form id="formulario_principal" runat="server">
+       <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" RenderMode="Inline">
+    <ContentTemplate>
+       <!aqui marca error-->  
+        
+        <div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap margen-abajo">
+
+    
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>Menu Avanzado</label></li>
+        <li><a href="#">Mensajes privados</a></li>
+          <li><a href="#">Clientes</a></li>
+          <li><a href="#">Catalogo</a></li>
+          <li><a href="#">Configuracion</a></li>
+          
+      </ul>
+    </aside>
+
+    
+
+    
+
+  <a class="exit-off-canvas"></a>
+
+        
+    
+    <div class="large-12 columns bar-top-blue estatica-arriba">
+        </div>
+        
+<div class="large-12 columns bar-mid-blue-light estatica">
+    <a class="left-off-canvas-toggle menu-oculto rotate" href="#" ><i class="fa fa-bars"></i></a> <img class="logo-crm" src="img/logo-inklaser-crm.png">
+    
+    
+    
+    
+    <div class="list-item right">
+
+    <asp:Panel ID="zona_cotizaciones_vendedor" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="cotizaciones_vendedor" runat="server" ToolTip="Mis Cotizaciones" onclick="cotizaciones_vendedor_Click"><i class="fa fa-list"></i></asp:LinkButton>
+        </asp:Panel>
+
+        <asp:Panel ID="zona_requisiciones_vendedor" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="requisiciones_vendedor" runat="server" ToolTip="Mis Requisiciones" onclick="requisiciones_vendedor_Click"><i class="fa fa-indent"></i></asp:LinkButton>
+        </asp:Panel>
+
+      <asp:Panel ID="zona_autorizacion_cotizaciones" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="autorizacion_cotizaciones" runat="server" ToolTip="Autorizar cotizaciones" onclick="autorizacion_cotizaciones_Click"><i class="fa fa-check-square-o"></i></asp:LinkButton>
+            <asp:Panel ID="panel_cotizaciones_autorizar" runat="server" class="circulo-not-mail-blue">
+            <asp:Label ID="numero_cotizaciones_autorizacion" runat="server" Text="1"></asp:Label></asp:Panel>
+        </asp:Panel>
+
+
+     <asp:Panel ID="zona_punto_venta" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="punto_venta" runat="server" ToolTip="Punto de venta" onclick="punto_venta_Click"><i class="fa fa-shopping-basket"></i></asp:LinkButton>
+        </asp:Panel>
+
+        <asp:Panel ID="zona_edicion_clientes" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="edicion_clientes" runat="server" ToolTip="Edición de clientes" onclick="busqueda_clientes_Click"><i class="fa fa-pencil"></i></asp:LinkButton>
+        </asp:Panel>
+
+     <asp:Panel ID="zona_diagnostico" runat="server" CssClass="icono_menu">
+        
+        <asp:LinkButton class="rotate" ID="diagnostico" runat="server" ToolTip="Diagnosticar problemas de sistema" onclick="diagnostico_Click"><i class="fa fa-area-chart opcion"></i></asp:LinkButton>
+           </asp:Panel>
+
+           <asp:Panel ID="zona_alta_requisiciones" runat="server" CssClass="icono_menu">
+        
+        <asp:LinkButton class="rotate" ID="alta_requisiciones" runat="server" ToolTip="Realizar una requisicion" onclick="alta_requisiciones_Click"><i class="fa fa-edit opcion"></i></asp:LinkButton>
+           </asp:Panel>
+
+
+            <asp:Panel ID="zona_alta_sucursales" runat="server" CssClass="icono_menu">
+        
+        <asp:LinkButton class="rotate" ID="alta_sucursales" runat="server" ToolTip="Alta de sucursales" Enabled="True" onclick="alta_sucursales_Click"><i class="fa fa-plus-circle opcion"></i></asp:LinkButton>
+           </asp:Panel>
+
+        <asp:Panel ID="zona_ordenes_compra" runat="server" CssClass="icono_menu">
+        
+        <asp:LinkButton class="rotate" ID="ordenes_compra" runat="server" ToolTip="Ordenes de compra" onclick="ordenes_compra_Click"><i class="fa fa-shopping-cart opcion"></i></asp:LinkButton>
+         <asp:Panel ID="panel_numero_ordenes_compra" runat="server" CssClass="circulo-not-mail">
+        <asp:Label ID="numero_ordenes" runat="server" Text="1"></asp:Label></asp:Panel>
+           </asp:Panel>
+
+    <asp:Panel ID="zona_requisiciones" runat="server" CssClass="icono_menu">
+        
+        <asp:LinkButton class="rotate" ID="requisiciones" runat="server" ToolTip="Requisiciones de sistema" onclick="requisiciones_Click"><i class="fa fa-newspaper-o opcion"></i></asp:LinkButton>
+        <asp:Panel ID="panel_requisiciones" runat="server" class="circulo-not-mail-blue">
+            <asp:Label ID="numero_requisiciones" runat="server" Text="1"></asp:Label></asp:Panel>
+           </asp:Panel>
+       
+        <asp:Panel ID="zona_llamar" runat="server" CssClass="icono_menu">
+        
+        <asp:LinkButton class="rotate" ID="llamar" runat="server" ToolTip="Llamar a un prospecto" onclick="prospectos_Click"><i class="fa fa-phone opcion"></i></asp:LinkButton>
+           </asp:Panel>
+          
+
+            <asp:Panel ID="zona_configuracion" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="configuracion" runat="server" onclick="configuracion_Click" ToolTip="Configuracion del sistema" Enabled="True"><i class="fa fa-gear opcion"></i></asp:LinkButton>
+         </asp:Panel>
+            
+            <asp:Panel ID="zona_dashboard" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="dashboard" runat="server" onclick="dashboard_Click" ToolTip="Dashboard" Enabled="True"><i class="fa fa-dashboard opcion"></i></asp:LinkButton>
+     </asp:Panel>
+       
+            <asp:Panel ID="zona_inventario" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="inventario" runat="server" Enabled="true" onclick="inventario_Click" ToolTip="Inventario"><i class="fa fa-database opcion"></i></asp:LinkButton>
+        </asp:Panel>
+            
+            <asp:Panel ID="zona_catalogo" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="catalogo" runat="server" ToolTip="Catalogo" onclick="catalogo_Click"><i class="fa fa-picture-o opcion"></i></asp:LinkButton>
+        </asp:Panel>
+
+        <asp:Panel ID="zona_alta_clientes" runat="server" CssClass="icono_menu">
+                <asp:LinkButton class="rotate" ID="alta_clientes" runat="server" 
+            ToolTip="Alta de clientes" onclick="alta_clientes_Click">
+                <i class="fa fa-user opcion"></i>
+                </asp:LinkButton>
+                </asp:Panel>
+
+        <asp:Panel ID="zona_chat" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="chat" runat="server" 
+            ToolTip="Chat" onclick="chat_Click">
+                <i class="fa fa-comment-o opcion"></i>
+                </asp:LinkButton>
+                 <asp:Panel ID="panel_mensajes_chat" runat="server" class="circulo-not-mail">
+        <asp:Label ID="numero_mensajes_chat" runat="server" Text="1"></asp:Label></asp:Panel>
+            </asp:Panel>
+         
+
+         <asp:Panel ID="zona_correo" runat="server" CssClass="icono_menu">
+            <asp:LinkButton class="rotate" ID="mensajes" runat="server" 
+            ToolTip="Servicio de correo interno" onclick="mensajes_Click">
+                <i class="fa fa-envelope-o opcion"></i>
+                </asp:LinkButton>
+            <asp:Panel ID="panel_mensajes" runat="server" class="circulo-not-mail-green">
+            <asp:Label ID="numero_mensajes" runat="server" Text="1"></asp:Label></asp:Panel>
+            </asp:Panel>
+         
+            <asp:Panel ID="zona_cerrar_sesion" runat="server" CssClass="icono_menu">
+        <asp:LinkButton class="rotate" ID="cerrar_sesion" runat="server" onclick="cerrar_sesion_Click" ToolTip="Cerrar Sesion"><i class="fa fa-power-off opcion"></i></asp:LinkButton>
+        </asp:Panel>
+            
+            
+            
+        
+    </div>
+    </div>
+    
+    
+    
+    

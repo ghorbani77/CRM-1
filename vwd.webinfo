@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<!-- 
+  Visual Studio global web project settings.
+-->
+<VisualWebDeveloper>
+
+  <comReferences>
+    <reference Name="interop.sf_conectorws_typelib" ID="{7776846E-609F-4420-877A-2596E4746E6A}\1.0\0"/>
+  </comReferences>
+</VisualWebDeveloper>
